@@ -28,7 +28,7 @@ public class RockPaperScissorsTryCatch {
 			
 		}
 
-
+  //Verifies whether the user input is right or wrong of wrong through an exception asking user to enter the right word
 	private static String VerifyUserInput() {	
 		String userinput="";
 		try
@@ -47,13 +47,12 @@ public class RockPaperScissorsTryCatch {
 		catch(Exception ex) 
 		{
 			System.out.println(ex.toString());	
-			VerifyUserInput();		
+			userinput=VerifyUserInput();		
 			
 		}
 		return userinput;
 	
 	}
-	
 	
 
 	/*
@@ -72,29 +71,27 @@ public class RockPaperScissorsTryCatch {
 	 */
 	private static String CheckWhoWon(String player1, String player2, String[] gamearray)
 	{
-		
 		if(player1.equalsIgnoreCase(player2))
 			return "draw";
 		List<String> mylist = Arrays.asList(gamearray);
 		if(mylist.contains(player1))
 		{
-			if(player1=="rock" && player2=="paper")
-					return player2;
-			if(player2=="rock" && player1=="paper")
-				return player1;
-			if(player1=="paper" && player2=="scissor")
+			if(player1.equals("rock") && player2=="paper")
 				return player2;
-			if(player2=="paper" && player1=="scissor")
+			else if(player1.equalsIgnoreCase("rock") && player2.equalsIgnoreCase("scissor"))
 				return player1;
-			if(player1=="rock" && player2=="scissor")
-				return player1;
-			if(player2=="scissor" && player1=="rock")
+			else if(player1.equalsIgnoreCase("paper") && player2.equalsIgnoreCase("scissor"))
 				return player2;
+			else if(player1.equalsIgnoreCase("paper") && player2.equalsIgnoreCase("rock"))
+				return player1;			
+			else if(player1.equalsIgnoreCase("scissor") && player2.equalsIgnoreCase("rock"))
+				return player2;
+			else if(player1.equalsIgnoreCase("scissor") && player2.equalsIgnoreCase("paper"))
+				return player1;
 			
 		}
-		
 		//return player2 as won  if player1 enters a different word other than rock paper and scissor 
-		return "player2";
+		return player2;
 		
 	}
 
