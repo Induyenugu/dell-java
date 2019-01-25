@@ -14,7 +14,9 @@ public class RockPaperScissorsTryCatch {
 		//Verify the user input whether its valid or not
 		String player1=VerifyUserInput();
 			
+		//Array of valid strings to be used in the game
 		String[] gamearray= {"rock", "paper", "scissor"};
+		
 		//Generates random value for player2
 		String player2=getPlayer2(gamearray);		
 		
@@ -29,29 +31,26 @@ public class RockPaperScissorsTryCatch {
 
 	private static String VerifyUserInput() {	
 		String userinput="";
-	try
-	{	
-	System.out.println("Please type one word from Rock Paper scissor");		
-	userinput= reader.nextLine();			
-	if(!(userinput.equalsIgnoreCase("rock" )|| userinput.equalsIgnoreCase("paper" ) ||  userinput.equalsIgnoreCase("scissor" )))
-	{
+		try
+		{	
+		System.out.println("Please type one word from Rock Paper scissor");		
+		userinput= reader.nextLine();			
+		if(!(userinput.equalsIgnoreCase("rock" )|| userinput.equalsIgnoreCase("paper" ) ||  userinput.equalsIgnoreCase("scissor" )))
+		{
+			
+			throw new IllegalArgumentException("You input "+userinput + " is  wrong");
+		}	
+			
+		reader.close();	
 		
-		throw new IllegalArgumentException("You input "+userinput + " is  wrong");
-	}
-	
-		
-	reader.close();
-	
-	
-	}			
-	catch(Exception ex) 
-	{
-		System.out.println(ex.toString());	
-		VerifyUserInput();
-		
-		
-	}
-	return userinput;
+		}			
+		catch(Exception ex) 
+		{
+			System.out.println(ex.toString());	
+			VerifyUserInput();		
+			
+		}
+		return userinput;
 	
 	}
 	
@@ -69,7 +68,7 @@ public class RockPaperScissorsTryCatch {
 	}
 	
 	/*
-	 * CHecks who is won
+	 * Checks who is won. It takes player1, payer2 and game array as input
 	 */
 	private static String CheckWhoWon(String player1, String player2, String[] gamearray)
 	{
@@ -93,6 +92,7 @@ public class RockPaperScissorsTryCatch {
 				return player2;
 			
 		}
+		
 		//return player2 as won  if player1 enters a different word other than rock paper and scissor 
 		return "player2";
 		
