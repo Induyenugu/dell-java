@@ -82,9 +82,10 @@ public class Statistics {
 	/*
 	 * Get the average of the input array of numbers
 	 */
-	public static double GetAverage(int sum, int length)
+	public static float GetAverage(int sum, int length)
 	{
-		return sum/length;	
+		return sum/(float)length;
+		
 	}
 	
 	
