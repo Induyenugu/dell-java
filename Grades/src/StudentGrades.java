@@ -28,7 +28,7 @@ public class StudentGrades {
         {
         	System.out.println("Enter Student " + (i+1) +" Name");        	
         	String studentid= reader.nextLine();
-        	System.out.println("Enter Student " + studentid+ " grades");   
+        	System.out.println("Enter Student " + studentid+ " grades comma seperated");   
         	String[] studentgrades= reader.nextLine().split(",");
         	studentandGrades.put(studentid, studentgrades);
         }   
@@ -70,7 +70,8 @@ public class StudentGrades {
 		double avgGrade=0;
 		for(String grade: grades)
 		{
-			avgGrade= avgGrade+ grade==null?0: Double.parseDouble(grade);
+			double numgrade= (grade==null?0: Double.parseDouble(grade));
+			avgGrade= avgGrade +numgrade;
 		}
 		
 		return avgGrade/(double)grades.length;
