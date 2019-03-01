@@ -6,7 +6,7 @@ public class TicTacToe {
 	//DEfine class variables
 	private static String[][] board = { { "", "", "" }, { "", "", "" }, { "", "", "" } };
 	private static String playerTurn = "X";
-	private static boolean winner = false;
+	private static boolean winner, draw = false;
 	private static Scanner reader = new Scanner(System.in);
 	private static int row;
 	private static int column;
@@ -23,20 +23,46 @@ public class TicTacToe {
 		printBoard();
 		
 		//Loop through the board after every entry frm player until one player wins
-		while (!winner) {
+		while (!(winner||draw)) {
 			System.out.println("Its " + playerTurn + "'s turn");
 			System.out.println("Pick a row and column rows being 0, 1,2 and columns being 0,1,2");
-
+			
+			//Gets inputs row and column from user ad validates the input is valid
 			GetInputfromTicTacToe();
 
+			//plays tic tac toe based on the given input
 			PlayTicTacToe(row, column);
+			
+			//verifies the board is full 
+			if(CheckBoardisFull())
+				System.out.println("Its a draw");		
 
 		}
 
 		reader.close();
 
 	}
-
+	
+	/**
+	 * Checks if the board is full or empty
+	 */
+    public static boolean CheckBoardisFull()
+	{
+    	draw=true;
+    	for(String[] row:board)
+    	{
+    		for(String column:row)
+    		{
+    			if(column.equals(""))
+    			{
+    				draw=false;
+    				break;
+    			}
+    		}
+    	}
+    	return draw;
+    	
+	}
 	/**
 	 * THis method gets input from user and asks him until he enters valid input
 	 */
@@ -74,12 +100,12 @@ public class TicTacToe {
 	 * This method helps in printing the board
 	 */
 	private static void printBoard() {
-		System.out.println("  0  1  2 ");
-		System.out.println("0 " + board[0][0] + " | " + board[0][1] + " | " + board[0][2] + " | ");
-		System.out.println("  ---------");
-		System.out.println("1 " + board[1][0] + " | " + board[1][1] + " | " + board[1][2] + " | ");
-		System.out.println("  ---------");
-		System.out.println("2 " + board[2][0] + " | " + board[2][1] + " | " + board[2][2] + " | ");
+		System.out.println("   0   1   2 ");
+		System.out.println("0 " + board[0][0] + "  | " + board[0][1] + "  | " + board[0][2] + "  |  ");
+		System.out.println("  ---------------");
+		System.out.println("1 " + board[1][0] + "  | " + board[1][1] + "  | " + board[1][2] + "  |  ");
+		System.out.println("  -------------");
+		System.out.println("2 " + board[2][0] + "  | " + board[2][1] + "  | " + board[2][2] + "   |  ");
 	}
 
 	/*
