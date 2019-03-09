@@ -13,6 +13,10 @@ public final class Dao {
 		private Connection connection = null;
 		private String connectionstring = "jdbc:sqlite:sample.db";
 
+		
+		/**
+		 * Constructor that establishes connection
+		 */
 		public Dao() {
 			
 	        try
@@ -45,6 +49,9 @@ public final class Dao {
 	        }
 		}
 		
+		/**
+		 * Connect method to create connection with DB
+		 */
 		private Connection connect() {
 	      
 	       
@@ -55,6 +62,10 @@ public final class Dao {
 	        }
 	        return connection;
 	    }
+		
+		/**
+		 * Add method to add tasks into ToDo Table in DB
+		 */
 
 		public void add(String description) {
 			String sql = "INSERT INTO ToDo (description,completed ) VALUES(?,?)";
@@ -85,7 +96,9 @@ public final class Dao {
 			
 		}
 		
-		
+		/**
+		 * retrieves all the Entries in ToDo table based on status
+		 */
 		public List<ToDo> getToDoEntries(String status) {
 
 			// check to find list of active entries in current database
@@ -138,7 +151,9 @@ public final class Dao {
 		}
 
 	
-
+		/**
+		 * Deletes entry/record in ToDO Table based on id
+		 */
 		public int delete(int id) {
 			String sql = "Delete from ToDo where id=?";
 			
@@ -172,7 +187,10 @@ public final class Dao {
 
 		}
 
-		public int update(int id) {			
+		/**
+		 * Updates the task to be completed
+		 */
+		public int MarkDone(int id) {			
 			
 			String sql = "Update ToDo set completed=1 where id=?";
 			

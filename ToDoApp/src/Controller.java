@@ -1,6 +1,10 @@
 import java.io.IOException;
 import java.util.List;
 
+/**
+ * @author Indumathi_Yenugu
+ *
+ */
 public class Controller {
 
 	/* Member variables */
@@ -79,7 +83,7 @@ public class Controller {
 	 */
 	public void processMarkAction() {
 
-		String input = consoleUtils.promptString("Please enter the Id to be deleted ");		
+		String input = consoleUtils.promptString("Please enter the Id to be marked completed ");		
 		
 		boolean validinteger = false;
 
@@ -89,10 +93,10 @@ public class Controller {
 
 		int id = Integer.parseInt(input);
 		
-		if (todoList.update(id)>0)
+		if (todoList.MarkDone(id)>0)
 		System.out.println("The project with Id " + id + " has been successfully marked done");
 		else {
-			System.out.println("The project with Id" + id + " not found");
+			System.out.println("The project with Id " + id + " not found");
 			}
 
 	}
@@ -116,12 +120,12 @@ public class Controller {
 		if (todoList.delete(id)>0)
 			System.out.println("The project with id " + id+ " has been successfully deleted");
 			else {
-				System.out.println("The project with Id" + id + " not found");
+				System.out.println("The project with Id " + id + " not found");
 				}
 		
 	}
 
-	/*
+	/**
 	 * The user wants to view a list of ToDoLIst entries This method conveys that
 	 * request to the ToDoLIst, along with any special options (active-only, filter
 	 * by project name)
@@ -133,7 +137,7 @@ public class Controller {
 
 	}
 
-	/*
+	/**
 	 * The user wants to add a new entry to the ToDoLIst This method conveys that
 	 * request to the ToDoLIst, along with the specified project name and task
 	 * description
@@ -147,6 +151,10 @@ public class Controller {
 	}
 
 
+	/**
+	 * @param value
+	 * @return true if user input is an integer
+	 */
 	boolean tryParseInt(String value) {
 		try {
 			Integer.parseInt(value);
