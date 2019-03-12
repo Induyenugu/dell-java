@@ -14,8 +14,9 @@ public class WordGuessGame {
 	private static Scanner reader = new Scanner(System.in);
 	static boolean guessedrightletterFlag, wordguessed = false;
 	private static char[] hiddencharArray;
+	private static StringBuilder wrongletterbuilder;
 	static String wordtobeGuessed, hiddenword = "";
-	static int maxattempts, userattempts = 0;
+	static int maxattempts, userattempts, wrongattempts = 0;
 
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub
@@ -26,7 +27,7 @@ public class WordGuessGame {
 
 		// pick a random word from the dictionary of words
 		wordtobeGuessed = GetRandomWord();
-		// System.out.println(wordtobeGuessed); // for testing purpose
+		System.out.println(wordtobeGuessed); // for testing purpose
 
 		// Restrict the no of attempts to double the length of word
 		maxattempts = 2 * wordtobeGuessed.length();
@@ -36,9 +37,11 @@ public class WordGuessGame {
 		System.out.println("Hidden Word to be guessed is " + hiddenword);
 		System.out.println("You have " + maxattempts + " to guess the word");
 		hiddencharArray = hiddenword.toCharArray();
+		wrongletterbuilder= new StringBuilder();
+		
 
 		// Loops until user guess the complete word or reaches max attempts to guess
-		while (!wordguessed || maxattempts > 0) {
+		while (!wordguessed && maxattempts > 0) {
 			maxattempts--;
 			userattempts++;
 			guessedrightletterFlag = false;
@@ -124,13 +127,16 @@ public class WordGuessGame {
 		}
 		hiddenword = String.valueOf(hiddencharArray);
 		if (hiddenword.indexOf("-") < 0) {
-			System.out.println("You Solved the word completely : " + hiddenword + " in " + userattempts + " attempts");
+			System.out.println("Congratulations!!, You Solved the word completely : " + hiddenword + " in " + userattempts + " attempts");
 			return true;
 
 		} else if (guessedrightletterFlag) {
 			System.out.println("You guess is right and here is the updated hidden word : " + hiddenword);
 		} else {
-			System.out.println("You guess is wrong and here is the hidden word : " + hiddenword);
+			wrongattempts++;
+			wrongletterbuilder.append(inputLetter+" , ");
+			System.out.println("You guess is wrong and you made "+ wrongattempts +" wrong attempts out of total attempts: "+ maxattempts);
+			System.out.println("Total wrong inputs entered "+wrongletterbuilder);
 		}
 		if (maxattempts == 0) {
 			System.out.println("You reached the Maxattemmpts " + (2 * actualword.length())
