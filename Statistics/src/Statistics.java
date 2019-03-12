@@ -34,7 +34,7 @@ public class Statistics {
 	public static int GetMaxNumber(int[] numberArray)
 	{
 		int max=numberArray[0];
-		for(int i=1;i<numberArray.length-1; i++)
+		for(int i=1;i<=numberArray.length-1; i++)
 		{
 			
 			if(max<numberArray[i])
@@ -52,7 +52,7 @@ public class Statistics {
 	public static int GetMinNumber(int[] numberArray)
 	{
 		int min=numberArray[0];
-		for(int i=1;i<numberArray.length-1; i++)
+		for(int i=1;i<=numberArray.length-1; i++)
 		{
 			
 			if(min>numberArray[i])
@@ -70,7 +70,7 @@ public class Statistics {
 	public static int GetSumofNumbers(int[] numberArray)
 	{	
 		int sum=numberArray[0];
-		for(int i=1;i<numberArray.length-1; i++)
+		for(int i=1;i<=numberArray.length-1; i++)
 		{
 			
 			sum=sum+numberArray[i];
@@ -82,9 +82,10 @@ public class Statistics {
 	/*
 	 * Get the average of the input array of numbers
 	 */
-	public static int GetAverage(int sum, int length)
+	public static float GetAverage(int sum, int length)
 	{
-		return sum/length;	
+		return sum/(float)length;
+		
 	}
 	
 	
